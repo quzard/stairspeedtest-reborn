@@ -1,5 +1,7 @@
 name: GitHub CI
-on: [push]
+on: 
+  watch:
+    types: started
 
 concurrency: 
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -9,6 +11,7 @@ jobs:
   linux32_build:
     name: Linux x86 Build
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
     - uses: actions/checkout@v2
     - name: Add commit id into version
@@ -35,6 +38,7 @@ jobs:
   linux64_build:
     name: Linux x86_64 Build
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
     - uses: actions/checkout@v2
     - name: Add commit id into version
@@ -61,6 +65,7 @@ jobs:
   macos_build:
     name: macOS Build
     runs-on: macos-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
     - uses: actions/checkout@v2
     - name: Add commit id into version
@@ -89,6 +94,7 @@ jobs:
   windows64_build:
     name: Windows x86_64 Build
     runs-on: windows-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     defaults:
       run:
         shell: msys2 {0}
@@ -147,6 +153,7 @@ jobs:
   windows32_build:
     name: Windows x86 Build
     runs-on: windows-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     defaults:
       run:
         shell: msys2 {0}
