@@ -56,8 +56,8 @@ mv ssr-local ../../base/tools/clients
 cd ../..
 
 curl -LO https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-macos-64.zip
-unzip v2ray*.zip v2ray v2ctl
-mv v2ray v2ctl base/tools/clients/
+unzip v2ray*.zip v2ray
+mv v2ray base/tools/clients/
 
 curl -LO https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-macos.zip
 unzip trojan*.zip trojan/trojan
